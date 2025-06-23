@@ -54,6 +54,21 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     restart: unless-stopped
+  
+  jenkins-agent:
+    image: jenkins/inbound-agent
+    container_name: jenkins-agent
+    depends_on:
+      - jenkins
+    networks:
+      - jenkins
+    environment:
+      - JENKINS_URL=http://jenkins:8080
+      - JENKINS_AGENT_NAME=Agent-1
+      - JENKINS_SECRET=${JENKINS_SECRET}
+    volumes:
+      - agent-data:/home/jenkins/agent
+    restart: unless-stopped
 
 networks:
   jenkins:
@@ -61,9 +76,10 @@ networks:
 
 volumes:
   jenkins-data:
+  agent-data:
   jenkins-docker-certs:
   dind-storage:
-
+  
 
 
 
