@@ -9,11 +9,7 @@ RUN usermod -aG docker jenkins
 
 USER jenkins
 
-RUN jenkins-plugin-cli --plugins \
-    blueocean \
-    docker-workflow \
-    workflow-aggregator \
-    git \
-    pipeline-stage-view \
-    credentials
+COPY plugins.txt /usr/share/jenkins/plugins.txt 
+
+RUN jenkins-plugin-cli --plugin-file /usr/share/jenkins/plugins.txt
 
