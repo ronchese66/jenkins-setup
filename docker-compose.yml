@@ -8,6 +8,9 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
       - ~/.ssh/id_ed25519:/var/jenkins_home/.ssh/id_ed25519:ro
+      - ~/docker-certs/ca.pem:/var/jenkins_home/.docker/ca.pem:ro
+      - ~/docker-certs/client-cert.pem:/var/jenkins_home/.docker/cert.pem:ro
+      - ~/docker-certs/client-key.pem:/var/jenkins_home/.docker/key.pem:ro
     restart: unless-stopped
     networks:
       - jenkins

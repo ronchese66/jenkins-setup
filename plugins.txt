@@ -1,6 +1,7 @@
 configuration-as-code
 blueocean
 docker-workflow
+docker-plugin
 workflow-aggregator
 git
 pipeline-stage-view
