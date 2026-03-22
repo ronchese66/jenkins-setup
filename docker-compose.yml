@@ -12,6 +12,9 @@ services:
       - ~/docker-certs/client-cert.pem:/var/jenkins_home/.docker/cert.pem:ro
       - ~/docker-certs/client-key.pem:/var/jenkins_home/.docker/key.pem:ro
     restart: unless-stopped
+    environment:
+      - DOCKER_HOST_1=tcp://xxx.xxx.xxx.xxx:2376
+      - DOCKER_HOST_2=tcp://xxx.xxx.xxx.xxx:2376
     networks:
       - jenkins
     healthcheck:
